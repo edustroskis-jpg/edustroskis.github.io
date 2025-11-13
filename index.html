@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>If anidado en C#</title>
+</head>
+<body>
+    <h2>Ejemplo de if anidado en C#</h2>
+    <form method="post">
+        <label>Introduce tu edad:</label><br>
+        <input type="number" name="edad" required><br><br>
+
+        <label>¿Tienes identificación oficial?</label><br>
+        <select name="identificacion">
+            <option value="sí">Sí</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <input type="submit" value="Ver resultado">
+    </form>
+
+    <hr>
+
+    @{ 
+        if (IsPost)
+        {
+            int edad = int.Parse(Request["edad"]);
+            string identificacion = Request["identificacion"];
+
+            if (edad >= 18)
+            {
+                <p>Eres mayor de edad.</p>;
+
+                if (identificacion == "sí")
+                {
+                    <p>Puedes entrar al evento.</p>;
+                }
+                else
+                {
+                    <p>No puedes entrar sin identificación.</p>;
+                }
+            }
+            else
+            {
+                <p>Eres menor de edad.</p>;
+
+                if (edad >= 15)
+                {
+                    <p>Puedes entrar con un adulto.</p>;
+                }
+                else
+                {
+                    <p>No puedes entrar al evento.</p>;
+                }
+            }
+        }
+    }
+</body>
+</html>
